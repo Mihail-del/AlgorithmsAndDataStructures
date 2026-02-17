@@ -6,12 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Pract3_Pulov" />
+        <module name="Pract5_Pulov" />
+        <module name="TestPract" />
         <module name="Pract1_Pulov" />
         <module name="Pract2_Pulov_MavenTest" />
-        <module name="Pract3_Pulov" />
         <module name="Pract6_Pulov" />
         <module name="Pract4_Pulov" />
-        <module name="Pract5_Pulov" />
       </profile>
     </annotationProcessing>
   </component>
