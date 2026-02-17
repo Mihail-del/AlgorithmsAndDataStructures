@@ -1,4 +1,4 @@
-# AlgorithmsAndDataStructures
+# Algorithms and Data Structures
 ## Pulov Mykhailo
 
 
