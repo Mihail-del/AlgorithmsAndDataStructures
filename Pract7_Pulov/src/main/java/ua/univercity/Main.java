@@ -1,9 +1,14 @@
 package ua.univercity;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Main {
+    private static final Logger log = LoggerFactory.getLogger(Main.class);
+
     public static void main(String[] args) {
         //!     === TASK ONE ===
-// /*
+         /*
         try {
             Order valid = new Order(1213310, "Irzhek@mail.pl", 3);
             System.out.println("Success order: " + valid);
@@ -30,6 +35,20 @@ public class Main {
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
         }
-//        /*
+        */
+
+        //!     === TASK ONE ===
+        // /*
+        OrderService service = new OrderService();
+
+        try {
+            service.checkout(123, "Gaba@mail.pl");
+        } catch (OrderProcessingException e) {
+            // Тут ми просто ловимо помилку, щоб програма не впала червоним
+            log.info("Caught exception in Main: {}", e.getMessage());
+        }
+
+        // */
+
     }
 }
