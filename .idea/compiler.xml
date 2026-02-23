@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Pract3_Pulov" />
         <module name="Pract5_Pulov" />
+        <module name="Pract7_Pulov" />
         <module name="Pract1_Pulov" />
         <module name="Pract2_Pulov_MavenTest" />
         <module name="Pract6_Pulov" />
