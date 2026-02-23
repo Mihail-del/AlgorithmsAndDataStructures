@@ -38,7 +38,7 @@ public class Main {
         */
 
         //!     === TASK ONE ===
-        // /*
+         /*
         OrderService service = new OrderService();
 
         try {
@@ -48,7 +48,18 @@ public class Main {
             log.info("Caught exception in Main: {}", e.getMessage());
         }
 
-        // */
+         */
 
+        //!     === TASK ONE ===
+        // /*
+        Order order = new Order(777, "Tymek@mail.pl", 10000);
+        ReceiptService receiptService = new ReceiptService();
+
+        try {
+            receiptService.generate(order);
+        } catch (ReceiptGenerationException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        // */
     }
 }
