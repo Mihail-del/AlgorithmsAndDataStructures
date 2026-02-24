@@ -38,17 +38,16 @@ public class Main {
         */
 
         //!     === TASK TWO ===
-         /*
+
         OrderService service = new OrderService();
 
         try {
             service.checkout(123, "Gaba@mail.pl");
         } catch (OrderProcessingException e) {
-            // Тут ми просто ловимо помилку, щоб програма не впала червоним
             log.info("Caught exception in Main: {}", e.getMessage());
         }
 
-         */
+
 
         //!     === TASK THREE ===
          /*
