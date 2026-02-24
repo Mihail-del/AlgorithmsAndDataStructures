@@ -16,6 +16,7 @@ class OrderService {
     }
 
     private void unsafePaymentCall() throws PaymentGatewayException {
+        log.warn("Unsafe payment");
         throw new PaymentGatewayException("Gateway Timeout 504");
     }
 }
