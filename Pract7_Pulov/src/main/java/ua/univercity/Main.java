@@ -37,7 +37,7 @@ public class Main {
         }
         */
 
-        //!     === TASK ONE ===
+        //!     === TASK TWO ===
          /*
         OrderService service = new OrderService();
 
@@ -50,8 +50,8 @@ public class Main {
 
          */
 
-        //!     === TASK ONE ===
-        // /*
+        //!     === TASK THREE ===
+         /*
         Order order = new Order(777, "Tymek@mail.pl", 10000);
         ReceiptService receiptService = new ReceiptService();
 
@@ -60,6 +60,11 @@ public class Main {
         } catch (ReceiptGenerationException e) {
             System.out.println("Error: " + e.getMessage());
         }
+         */
+
+        //!     === TASK FOUR ===
+        // /*
+
         // */
     }
 }
