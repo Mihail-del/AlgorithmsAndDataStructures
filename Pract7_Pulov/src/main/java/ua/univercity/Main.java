@@ -49,7 +49,7 @@ public class Main {
 
 
 
-        //!     === TASK THREE ===
+        //!     === TASK THREE AND FOUR ===
          /*
         Order order = new Order(777, "Tymek@mail.pl", 10000);
         ReceiptService receiptService = new ReceiptService();
@@ -60,9 +60,6 @@ public class Main {
             System.out.println("Error: " + e.getMessage());
         }
          */
-
-        //!     === TASK FOUR ===
-        // /*
 
         // */
     }
