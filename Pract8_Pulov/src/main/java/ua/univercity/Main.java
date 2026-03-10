@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-
+        //! ===== TASK ONE =====
         System.out.println("RAW LIST");
 
         List rawList = new ArrayList();
@@ -34,5 +34,8 @@ public class Main {
         for (String text : genericList) {
             System.out.println("Прочитано: " + text);
         }
+
+
+        //! ===== TASK TWO =====
     }
 }
