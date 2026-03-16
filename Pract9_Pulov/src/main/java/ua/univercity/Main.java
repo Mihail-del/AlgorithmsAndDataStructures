@@ -94,6 +94,7 @@ public class Main {
          */
 
         //! === TASK FOUR ===
+        /*
         System.out.println("| @Data (UserDto)");
         UserDto user = new UserDto();
         user.setId("U123");
@@ -112,5 +113,6 @@ public class Main {
                 .deliveryAddress("Warsaw, ul. Zlota, 2")
                 .build();
         System.out.println("Checkout Request created: " + request);
+         */
     }
 }
