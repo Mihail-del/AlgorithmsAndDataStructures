@@ -41,6 +41,7 @@ public class Main {
          */
 
         //! === TASK THREE ===
+        /*
         List<Ticket> tickets = new ArrayList<>();
         tickets.add(new Ticket(2, 100500));
         tickets.add(new Ticket(1, 100200));
@@ -90,5 +91,26 @@ public class Main {
                 return;
         }
         System.out.println("Strategy '" + strategy + "': " + list);
+         */
+
+        //! === TASK FOUR ===
+        System.out.println("| @Data (UserDto)");
+        UserDto user = new UserDto();
+        user.setId("U123");
+        user.setEmail("student@mail.com");
+        System.out.println("User: " + user);
+
+        System.out.println("\n| @Value (Price)");
+        Price price = new Price(99.99, "PLN");
+        System.out.println("Price: " + price.getAmount() + " " + price.getCurrency());
+        System.out.println("Price toString: " + price);
+
+        System.out.println("\n| @Builder (CheckoutRequest) ===");
+        CheckoutRequest request = CheckoutRequest.builder()
+                .user(user)
+                .price(price)
+                .deliveryAddress("Warsaw, ul. Zlota, 2")
+                .build();
+        System.out.println("Checkout Request created: " + request);
     }
 }
