@@ -7,7 +7,8 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         //! === TASK ONE ===
-        /*
+        System.out.println("\n\n=== TASK ONE ===");
+
         System.out.println("| Static Nested class");
         Car myCar = new Car("Audi R8");
 
@@ -23,10 +24,10 @@ public class Main {
         Library.Book myBook = myLibrary.new Book("Piano tutor", "Frederik Chopin");
 
         System.out.println(myBook.bookLabel());
-        */
 
         //! === TASK TWO ===
-        /*
+        System.out.println("\n\n=== TASK TWO ===");
+
         LocalAnonymous demo = new LocalAnonymous();
 
         System.out.println("| Local Class");
@@ -38,10 +39,10 @@ public class Main {
         System.out.println("\n| Anonymous Class");
         Runnable task = demo.runOnce();
         task.run();
-         */
 
         //! === TASK THREE ===
-        /*
+        System.out.println("\n\n=== TASK THREE ===");
+
         List<Ticket> tickets = new ArrayList<>();
         tickets.add(new Ticket(2, 100500));
         tickets.add(new Ticket(1, 100200));
@@ -91,9 +92,10 @@ public class Main {
                 return;
         }
         System.out.println("Strategy '" + strategy + "': " + list);
-         */
 
         //! === TASK FOUR ===
+        System.out.println("\n\n=== TASK FOUR ===");
+
         System.out.println("| @Data (UserDto)");
         UserDto user = new UserDto();
         user.setId("U123");
