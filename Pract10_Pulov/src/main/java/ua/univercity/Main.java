@@ -87,5 +87,22 @@ public class Main {
         LambdaRefactorLab.sortMethodRef(schedule3);
         EventLab.notifyAll(schedule3, e -> System.out.println(e.label()));
 
+        //! === TASK FOUR ===
+        System.out.println("\n\n=== TASK FOUR ===");
+
+        // Event in Kyiv at 12:00
+        Event kyivEvent = new Event("Kyiv Sync", LocalDateTime.of(2026, 3, 25, 12, 0), 60, kyivZone, "A");
+
+        // Event in London at 12:00
+        Event londonEvent = new Event("London Sync", LocalDateTime.of(2026, 3, 25, 12, 0), 60, londonZone, "B");
+
+        System.out.println("Kyiv Event Instant (UTC): " + DateTimeLab.toInstant(kyivEvent));
+
+        long minutesDiff = DateTimeLab.minutesBetween(kyivEvent, londonEvent);
+        System.out.println("Minutes between Kyiv and London: " + minutesDiff + " (" + (minutesDiff / 60) + " hours)");
+
+        System.out.println("Kyiv Sync Event by Tokio zone: " + DateTimeLab.startInZone(kyivEvent, "Asia/Tokyo"));
+
+
     }
 }
