@@ -29,4 +29,11 @@ public class Event {
     public String label() {
         return title + " [" + track + "]";
     }
+
+    // Getters
+    public String getTitle() { return title; }
+    public LocalDateTime getStart() { return start; }
+    public int getDurationMinutes() { return durationMinutes; }
+    public ZoneId getZone() { return zone; }
+    public String getTrack() { return track; }
 }
