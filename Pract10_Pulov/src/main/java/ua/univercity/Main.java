@@ -52,6 +52,40 @@ public class Main {
 
         EventLab.findConflicts(schedule);
 
+        //! === TASK THREE ===
+        System.out.println("\n\n=== TASK THREE ===");
+
+        // Init Events
+        List<Event> schedule1 = Arrays.asList(
+                new Event("B First Event", LocalDateTime.of(2026, 3, 25, 10, 0), 60, kyivZone, "Track A"),
+                new Event("C Second Event", LocalDateTime.of(2026, 3, 25, 11, 30), 45, kyivZone, "Track B"),
+                new Event("A Third Event", LocalDateTime.of(2026, 3, 25, 9, 30), 90, kyivZone, "Track A")
+        );
+
+        System.out.println("| Anonymous class");
+        LambdaRefactorLab.sortAnonymous(schedule1);
+        EventLab.notifyAll(schedule1, e -> System.out.println(e.label()));
+
+        // Mix order
+        List<Event> schedule2 = Arrays.asList(
+                new Event("A First Event", LocalDateTime.of(2026, 3, 25, 10, 0), 60, kyivZone, "Track A"),
+                new Event("C Second", LocalDateTime.of(2026, 3, 25, 11, 30), 45, kyivZone, "Track B"),
+                new Event("B Third Event", LocalDateTime.of(2026, 3, 25, 9, 30), 90, kyivZone, "Track A")
+        );
+
+        System.out.println("\n| Lambda");
+        LambdaRefactorLab.sortLambda(schedule2);
+        EventLab.notifyAll(schedule2, e -> System.out.println(e.label()));
+
+        List<Event> schedule3 = Arrays.asList(
+                new Event("B First Event", LocalDateTime.of(2026, 3, 25, 10, 0), 60, kyivZone, "Track A"),
+                new Event("A Second Event", LocalDateTime.of(2026, 3, 25, 11, 30), 45, kyivZone, "Track B"),
+                new Event("C Third Event", LocalDateTime.of(2026, 3, 25, 9, 30), 90, kyivZone, "Track A")
+        );
+
+        System.out.println("\n| Method Reference");
+        LambdaRefactorLab.sortMethodRef(schedule3);
+        EventLab.notifyAll(schedule3, e -> System.out.println(e.label()));
 
     }
 }
