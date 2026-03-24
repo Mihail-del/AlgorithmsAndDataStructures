@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Pract8_Pulov" />
+        <module name="Pract10_Pulov" />
         <module name="Pract3_Pulov" />
         <module name="Pract9_Pulov" />
         <module name="Pract5_Pulov" />
