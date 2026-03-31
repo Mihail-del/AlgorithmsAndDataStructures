@@ -62,5 +62,37 @@ public class Main {
                 .limit(topN)
                 .forEach(entry -> System.out.println(entry.getKey() + " -> " + entry.getValue()));
 
+
+
+        //! === TASK THREE ===
+        System.out.println("\n\n=== TASK THREE ===");
+
+        List<Sale> sales = List.of(
+                new Sale("a@ex.com", "Tea", 120),
+                new Sale("b@ex.com", "Cake", 200),
+                new Sale("a@ex.com", "Tea", 120),
+                new Sale("c@ex.com", "Coffee", 150),
+                new Sale("b@ex.com", "Cake", 200)
+        );
+
+        System.out.println("| Income (toMap merge)");
+        Map<String, Integer> revenueByProduct = sales.stream()
+                .collect(Collectors.toMap(
+                        Sale::product,
+                        Sale::cents,
+                        Integer::sum
+                ));
+
+        System.out.println(revenueByProduct);
+
+
+        System.out.println("\n| Transaction quantity (groupingBy)");
+        Map<String, Long> transactionsByCustomer = sales.stream()
+                .collect(Collectors.groupingBy(
+                        Sale::customerEmail,
+                        Collectors.counting()
+                ));
+
+        System.out.println(transactionsByCustomer);
     }
 }
