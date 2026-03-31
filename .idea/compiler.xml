@@ -15,6 +15,7 @@
         <module name="Pract1_Pulov" />
         <module name="Pract2_Pulov_MavenTest" />
         <module name="Pract6_Pulov" />
+        <module name="Pract11_Pulov" />
         <module name="Pract4_Pulov" />
       </profile>
     </annotationProcessing>
