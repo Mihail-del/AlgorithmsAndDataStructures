@@ -1,6 +1,7 @@
 package ua.univercity;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -97,6 +98,7 @@ public class Main {
         System.out.println(transactionsByCustomer);
 
 
+
         //! === TASK FOUR ===
         System.out.println("\n\n=== TASK FOUR ===");
 
@@ -126,5 +128,30 @@ public class Main {
                 .toList();
 
         System.out.println("Errors list: " + failureMessages);
+
+
+
+        //! === TASK FIVE ===
+        System.out.println("\n\n=== TASK FIVE ===");
+
+        System.out.println("| partitioningBy");
+
+        Map<Boolean, List<Book>> recentVsOld = books.stream()
+                .collect(Collectors.partitioningBy(b -> b.year() > 2015));
+
+        System.out.println("Recent vs Old books: " + recentVsOld);
+
+        System.out.println("\n| toMap with TreeMap");
+
+        Map<String, Integer> sortedRevenue = sales.stream()
+                .collect(Collectors.toMap(
+                        Sale::product,
+                        Sale::cents,
+                        Integer::sum,
+                        TreeMap::new
+                ));
+
+        System.out.println("Sorted revenue: " + sortedRevenue);
+
     }
 }
