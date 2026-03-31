@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+
 public class Main {
     public static void main(String[] args) {
         //! === TASK ONE ===
@@ -94,5 +95,36 @@ public class Main {
                 ));
 
         System.out.println(transactionsByCustomer);
+
+
+        //! === TASK FOUR ===
+        System.out.println("\n\n=== TASK FOUR ===");
+
+        List<Result> results = List.of(
+                new Success("Data downloaded successfully"),
+                new Failure("Connection error"),
+                new Success("Profile updated"),
+                new Failure("Incorrect credentials"),
+                new Failure("Server timeout")
+        );
+
+        System.out.println("| Count results");
+        Map<Boolean, Long> counts = results.stream()
+                .collect(Collectors.partitioningBy(
+                        r -> r instanceof Success,
+                        Collectors.counting()
+                ));
+
+        System.out.println("Count Success: " + counts.get(true));
+        System.out.println("Count Failure: " + counts.get(false));
+
+
+        System.out.println("\n| Collect info");
+        List<String> failureMessages = results.stream()
+                .filter(r -> r instanceof Failure)
+                .map(r -> ((Failure) r).message())
+                .toList();
+
+        System.out.println("Errors list: " + failureMessages);
     }
 }
