@@ -150,7 +150,7 @@ public class Main {
                         Integer::sum,
                         TreeMap::new
                 ));
-
+Su
         System.out.println("Sorted revenue: " + sortedRevenue);
 
     }
