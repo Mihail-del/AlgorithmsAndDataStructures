@@ -33,6 +33,16 @@ public class Main {
         Files.deleteIfExists(testFile);
 
         //! === TASK TWO ===
+        System.out.println("\n\n=== TASK TWO ===\n");
+
+        Path reportFile = Path.of("./Pract12_Pulov/src/main/report.txt");
+
+        try {
+            PaymentReportWriter.writeReport(reportFile, stats.payments(), stats.invalidLines());
+            System.out.println("Report saved to " + reportFile.toAbsolutePath());
+        } catch (IOException e) {
+            System.err.println("Error in report saving: " + e.getMessage());
+        }
 
     }
 }
