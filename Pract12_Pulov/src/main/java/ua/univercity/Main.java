@@ -1,6 +1,7 @@
 package ua.univercity;
 
 import java.io.IOException;
+import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -42,6 +43,33 @@ public class Main {
             System.out.println("Report saved to " + reportFile.toAbsolutePath());
         } catch (IOException e) {
             System.err.println("Error in report saving: " + e.getMessage());
+        }
+
+        //! === TASK THREE ===
+        System.out.println("\n\n=== TASK THREE ===\n");
+
+        Path inboxDir = Path.of("./Pract12_Pulov/src/main/practical-data/inbox");
+        Path archiveDir = Path.of("./Pract12_Pulov/src/main/practical-data/archive");
+
+        Files.createDirectories(inboxDir);
+        Files.writeString(inboxDir.resolve("report_2026.txt"), "Important report data");
+        Files.writeString(inboxDir.resolve("cache_A.tmp"), "Temporary cache data A");
+        Files.writeString(inboxDir.resolve("cache_B.tmp"), "Temporary cache data B");
+        Files.writeString(inboxDir.resolve("summary.txt"), "Summary text");
+
+        System.out.println("| Starting Archiver");
+
+        InboxArchiver.archiveTmpFiles(inboxDir, archiveDir);
+
+        System.out.println("\n| Verification");
+        System.out.println("Remaining in Inbox:");
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(inboxDir)) {
+            for (Path p : stream) System.out.println(" - " + p.getFileName());
+        }
+
+        System.out.println("\nMoved to Archive:");
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(archiveDir)) {
+            for (Path p : stream) System.out.println(" - " + p.getFileName());
         }
 
     }
