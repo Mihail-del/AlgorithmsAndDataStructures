@@ -72,5 +72,26 @@ public class Main {
             for (Path p : stream) System.out.println(" - " + p.getFileName());
         }
 
+        //! === TASK FOUR ===
+        System.out.println("\n\n=== TASK FOUR ===\n");
+
+        Path baseDir = Path.of("practical-data/base-folder");
+
+        System.out.println("| Valid Path");
+        try {
+            Path safePath = PathSafety.safeResolve(baseDir, "reports/2025.txt");
+            System.out.println("SUCCESS. Resolved path is safe: " + safePath);
+        } catch (IllegalArgumentException e) {
+            System.err.println("ERROR: " + e.getMessage());
+        }
+
+        System.out.println("\n| Path Traversal Attempt");
+        try {
+            Path maliciousPath = PathSafety.safeResolve(baseDir, "../secret.txt");
+            System.out.println("SUCCESS. Resolved path is safe: " + maliciousPath);
+        } catch (IllegalArgumentException e) {
+            System.err.println("BLOCKED: " + e.getMessage());
+        }
+
     }
 }
