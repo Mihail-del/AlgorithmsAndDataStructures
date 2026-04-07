@@ -93,5 +93,40 @@ public class Main {
             System.err.println("BLOCKED: " + e.getMessage());
         }
 
+
+        //! === TASK FIVE ===
+        System.out.println("\n\n=== TASK FIVE ===\n");
+
+        Path statusFile = Path.of("status.bin");
+        int nBytes = 10;
+
+        try {
+            byte[] initialData = new byte[nBytes];
+            Files.write(statusFile, initialData);
+            System.out.println("Created '" + statusFile.getFileName() + "' with " + nBytes + " zero bytes.");
+
+
+            int targetIndex = 4;
+            byte newStatus = 7;
+
+            StatusFile.updateStatus(statusFile, targetIndex, newStatus);
+            System.out.println("Updated byte at index " + targetIndex + " to value: " + newStatus);
+
+
+            byte readBackStatus = StatusFile.readStatus(statusFile, targetIndex);
+            System.out.println("Read back from index " + targetIndex + " : " + readBackStatus);
+
+            if (readBackStatus == newStatus) {
+                System.out.println("SUCCESS: Byte successfully updated and verified in the fixed file.");
+            } else {
+                System.out.println("ERROR: Byte mismatch detected.");
+            }
+
+            Files.deleteIfExists(statusFile);
+
+        } catch (IOException e) {
+            System.err.println("File processing error: " + e.getMessage());
+        }
+
     }
 }
