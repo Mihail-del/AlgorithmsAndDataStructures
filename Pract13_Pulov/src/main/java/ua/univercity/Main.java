@@ -41,6 +41,8 @@ public class Main {
         System.out.println("Total sum (cents): " + sumResult[0]);
         System.out.println("Max order (cents): " + maxResult[0]);
 
+
+
         //! === TASK TWO ===
         System.out.println("\n\n=== TASK TWO ===\n");
 
@@ -80,5 +82,36 @@ public class Main {
 
         System.out.println("Cycled " + iterations + " times");
         System.out.println("Quantity of errors (available < 0): " + violationsCount);
+
+
+
+        //! === TASK THREE ===
+        System.out.println("\n\n=== TASK THREE ===\n");
+
+        Account acc1 = new Account(1, 1000);
+        Account acc2 = new Account(2, 1000);
+
+        Thread thread1 = new Thread(() -> {
+            for (int i = 0; i < 100; i++) {
+                TransferService.transfer(acc1, acc2, 10);
+            }
+            System.out.println("Thread One finished");
+        });
+
+        Thread thread2 = new Thread(() -> {
+            for (int i = 0; i < 100; i++) {
+                TransferService.transfer(acc2, acc1, 10);
+            }
+            System.out.println("Thread Two finished");
+        });
+
+        thread1.start();
+        thread2.start();
+
+        thread1.join();
+        thread2.join();
+
+        System.out.println("Final balance of Account 1: " + acc1.getBalance());
+        System.out.println("Final balance of Account 2: " + acc2.getBalance());
     }
 }
