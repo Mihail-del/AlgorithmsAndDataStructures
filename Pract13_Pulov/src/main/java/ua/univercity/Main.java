@@ -1,7 +1,7 @@
 package ua.univercity;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
@@ -113,5 +113,32 @@ public class Main {
 
         System.out.println("Final balance of Account 1: " + acc1.getBalance());
         System.out.println("Final balance of Account 2: " + acc2.getBalance());
+
+
+        //! === TASK FOUR ===
+        System.out.println("\n\n=== TASK FOUR ===\n");
+
+        TicketQueue queue = new TicketQueue();
+        ConcurrentHashMap<String, Integer> stats = new ConcurrentHashMap<>();
+
+        int numConsumers = 3;
+        int totalTickets = 50;
+
+        Thread[] consumers = new Thread[numConsumers];
+        for (int i = 0; i < numConsumers; i++) {
+            consumers[i] = new Thread(new TicketConsumer(queue, stats, "Consumer-" + (i + 1)));
+            consumers[i].start();
+        }
+
+        Thread producer = new Thread(new TicketProducer(queue, numConsumers, totalTickets));
+        producer.start();
+
+        producer.join();
+        for (Thread c : consumers) {
+            c.join();
+        }
+
+        System.out.println("\n| Final stats");
+        stats.forEach((topic, count) -> System.out.println(topic + ": " + count));
     }
 }
