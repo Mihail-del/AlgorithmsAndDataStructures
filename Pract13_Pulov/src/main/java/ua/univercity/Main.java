@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         //! === TASK ONE ===
-        System.out.println("=== TASK ONE ===");
+        System.out.println("\n\n=== TASK ONE ===\n");
 
         List<Order> orders = List.of(
                 new Order(1L, 1500),
@@ -40,5 +40,45 @@ public class Main {
 
         System.out.println("Total sum (cents): " + sumResult[0]);
         System.out.println("Max order (cents): " + maxResult[0]);
+
+        //! === TASK TWO ===
+        System.out.println("\n\n=== TASK TWO ===\n");
+
+        Inventory unsafe = new UnsafeInventory(100);
+        runReservationExperiment(unsafe);
+        System.out.println("UnsafeInventory balance: " + unsafe.available());
+
+        Inventory safe = new SynchronizedInventory(100);
+        runReservationExperiment(safe);
+        System.out.println("SynchronizedInventory balance: " + safe.available());
+
+        runStressTest(500);
+    }
+
+    private static void runReservationExperiment(Inventory inventory) throws InterruptedException {
+        Thread thread1 = new Thread(() -> inventory.reserve(60));
+        Thread thread2 = new Thread(() -> inventory.reserve(60));
+
+        thread1.start();
+        thread2.start();
+
+        thread1.join();
+        thread2.join();
+    }
+
+    private static void runStressTest(int iterations) throws InterruptedException {
+        int violationsCount = 0;
+
+        for (int i = 0; i < iterations; i++) {
+            Inventory unsafe = new UnsafeInventory(100);
+            runReservationExperiment(unsafe);
+
+            if (unsafe.available() < 0) {
+                violationsCount++;
+            }
+        }
+
+        System.out.println("Cycled " + iterations + " times");
+        System.out.println("Quantity of errors (available < 0): " + violationsCount);
     }
 }
