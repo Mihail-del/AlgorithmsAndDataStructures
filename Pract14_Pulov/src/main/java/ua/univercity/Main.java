@@ -24,5 +24,14 @@ public class Main {
         System.out.println("\n| Testing Cash Service");
         cashService.pay(45);
 
+        //! === TASK THREE ===
+        System.out.println("\n\n=== TASK THREE ===\n");
+
+        System.out.println("| Starting StepRunner");
+
+        SetupFlow flow = new SetupFlow();
+        StepRunner.run(flow);
+
+        System.out.println("| StepRunner Finished");
     }
 }
